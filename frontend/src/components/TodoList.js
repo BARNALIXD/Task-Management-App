@@ -24,7 +24,7 @@ function TodoList({ todos, onToggleComplete, onUpdateTodo, onDeleteTodo }) {
   if (todos.length === 0) {
     return (
       <div className="empty-state">
-        <p>No todos yet. Add one above to get started!</p>
+        <p>No tasks yet. Add one above to get started!</p>
       </div>
     );
   }
@@ -55,4 +55,5 @@ function TodoList({ todos, onToggleComplete, onUpdateTodo, onDeleteTodo }) {
 }
 
 export default TodoList;
+
 

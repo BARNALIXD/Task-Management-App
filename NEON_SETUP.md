@@ -1,6 +1,6 @@
 # NeonDB Setup Guide
 
-This guide will walk you through setting up NeonDB (serverless PostgreSQL) for your todo application.
+This guide will walk you through setting up NeonDB (serverless PostgreSQL) for your task management application.
 
 ## Step 1: Create a NeonDB Account
 
@@ -11,7 +11,7 @@ This guide will walk you through setting up NeonDB (serverless PostgreSQL) for y
 ## Step 2: Create a New Project
 
 1. Once logged in, click **"Create a project"** or **"New Project"**
-2. Choose a project name (e.g., "todo-app")
+2. Choose a project name (e.g., "task-management")
 3. Select a region closest to you (for better performance)
 4. Choose PostgreSQL version (default is fine)
 5. Click **"Create project"**
@@ -51,7 +51,7 @@ PORT=5000
    npm run prisma:migrate
    ```
 3. When prompted, enter a migration name (e.g., "init" or "create_todos_table")
-4. This will create the `todos` table in your NeonDB database
+4. This will create the `todos` table in your NeonDB database (the table name remains 'todos' for database compatibility)
 
 ## Step 6: Verify the Setup
 
@@ -90,7 +90,7 @@ Once your database is set up:
 1. Your backend server should connect automatically
 2. Test the API by visiting `http://localhost:5000/api/health`
 3. Start your frontend with `npm start` in the frontend folder
-4. Your todo app should now be fully functional!
+4. Your task management app should now be fully functional!
 
 ## Alternative: Using NeonDB Dashboard
 
@@ -98,4 +98,5 @@ You can also manage your database directly from the NeonDB dashboard:
 1. Go to your NeonDB project dashboard
 2. Click on **"SQL Editor"** to run SQL queries
 3. Use **"Branching"** feature for database versioning (Pro feature)
+
 

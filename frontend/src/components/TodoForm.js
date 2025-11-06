@@ -23,7 +23,7 @@ function TodoForm({ onCreateTodo }) {
         <input
           type="text"
           className="form-input"
-          placeholder="Enter todo title..."
+          placeholder="Enter task title..."
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           required
@@ -39,11 +39,12 @@ function TodoForm({ onCreateTodo }) {
         />
       </div>
       <button type="submit" className="submit-button">
-        Add Todo
+        Add Task
       </button>
     </form>
   );
 }
 
 export default TodoForm;
+
 

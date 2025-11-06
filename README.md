@@ -1,6 +1,6 @@
-# Task Management Web App - SDE Bug Fix Assignment
+# Task Management Application
 
-A full-stack Task Management application built for sales teams to track, manage, and prioritize tasks based on ROI (Return on Investment). This application contains **5 intentional bugs** that need to be fixed as part of the SDE assignment.
+A full-stack Task Management application built with React, Express.js, Prisma, and NeonDB (PostgreSQL). Manage and organize your tasks efficiently.
 
 ## Features
 
@@ -44,7 +44,7 @@ A full-stack Task Management application built for sales teams to track, manage,
 ### 1. Clone/Download the Project
 
 ```bash
-cd todo
+cd task-management
 ```
 
 ### 2. Backend Setup
@@ -170,7 +170,7 @@ This application contains **5 intentional bugs** that need to be fixed:
 ## 📁 Project Structure
 
 ```
-todo/
+task-management/
 ├── backend/
 │   ├── prisma/
 │   │   └── schema.prisma          # Database schema (Task model)
@@ -314,3 +314,4 @@ Tasks are sorted using the following priority:
 ## 📄 License
 
 ISC
+

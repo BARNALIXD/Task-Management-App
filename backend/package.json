@@ -1,7 +1,7 @@
 {
-  "name": "todo-backend",
+  "name": "task-management-backend",
   "version": "1.0.0",
-  "description": "Todo list backend with Express.js and Prisma",
+  "description": "Task Management backend with Express.js and Prisma",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
@@ -10,7 +10,7 @@
     "prisma:migrate": "prisma migrate dev",
     "prisma:studio": "prisma studio"
   },
-  "keywords": ["todo", "express", "prisma"],
+  "keywords": ["task-management", "tasks", "express", "prisma"],
   "author": "",
   "license": "ISC",
   "dependencies": {
@@ -24,4 +24,5 @@
     "prisma": "^5.7.1"
   }
 }
+
 

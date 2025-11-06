@@ -1,7 +1,7 @@
 {
-  "name": "todo-frontend",
+  "name": "task-management-frontend",
   "version": "1.0.0",
-  "description": "Todo list React frontend",
+  "description": "Task Management React frontend",
   "private": true,
   "dependencies": {
     "react": "^18.2.0",
@@ -33,4 +33,5 @@
   },
   "proxy": "http://localhost:5000"
 }
+
 

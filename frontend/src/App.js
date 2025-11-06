@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './App.css';
+import Snackbar from './components/Snackbar';
+import SummaryInsights from './components/SummaryInsights';
 import TaskForm from './components/TaskForm';
 import TaskList from './components/TaskList';
-import SummaryInsights from './components/SummaryInsights';
-import Snackbar from './components/Snackbar';
 
 const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
 
@@ -39,13 +39,12 @@ function App() {
     }
   };
 
-  // BUG 1: Double fetch - useEffect runs twice due to StrictMode and missing dependency handling
+  // Ensure fetch runs only once even under React 18 StrictMode (dev double-invoke)
+  const hasFetchedRef = useRef(false);
   useEffect(() => {
+    if (hasFetchedRef.current) return;
+    hasFetchedRef.current = true;
     fetchTasks();
-  }, []); // This will run twice in StrictMode
-
-  useEffect(() => {
-    fetchTasks(); // BUG 1: Duplicate call
   }, []);
 
   // Create new task
@@ -336,3 +335,4 @@ function App() {
 }
 
 export default App;
+

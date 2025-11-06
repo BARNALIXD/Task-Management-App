@@ -1,6 +1,13 @@
 # Task Management Application
 
+<<<<<<< HEAD
 A full-stack Task Management application built with React, Express.js, Prisma, and NeonDB (PostgreSQL). Manage and organize your tasks efficiently.
+=======
+link : https://task-management-app28.netlify.app/
+
+
+A full-stack Task Management application built for sales teams to track, manage, and prioritize tasks based on ROI (Return on Investment). This application contains **5 intentional bugs** that need to be fixed as part of the SDE assignment.
+>>>>>>> 138ff513fd65db6105e34cf2ee02270c58f89bd7
 
 ## Features
 

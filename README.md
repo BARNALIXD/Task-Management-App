@@ -1,5 +1,8 @@
 # Task Management Web App - SDE Bug Fix Assignment
 
+link : <img width="180" height="40" alt="image" src="https://github.com/user-attachments/assets/064de113-ef45-4257-9cfd-c1232fa6a94d" />
+
+
 A full-stack Task Management application built for sales teams to track, manage, and prioritize tasks based on ROI (Return on Investment). This application contains **5 intentional bugs** that need to be fixed as part of the SDE assignment.
 
 ## Features

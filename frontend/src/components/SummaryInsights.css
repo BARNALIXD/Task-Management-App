@@ -1,0 +1,94 @@
+.summary-insights {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 12px;
+  padding: 25px;
+  margin-bottom: 30px;
+  color: white;
+}
+
+.summary-insights h2 {
+  margin: 0 0 20px 0;
+  font-size: 1.5rem;
+}
+
+.insights-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+}
+
+.insight-card {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  padding: 15px;
+  text-align: center;
+  transition: all 0.3s;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.insight-card:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.insight-label {
+  font-size: 0.85rem;
+  opacity: 0.9;
+  margin-bottom: 8px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.insight-value {
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.grade-card .insight-value {
+  font-size: 2.5rem;
+}
+
+.grade-card .grade-Aplus {
+  color: #2ecc71;
+}
+
+.grade-card .grade-A {
+  color: #27ae60;
+}
+
+.grade-card .grade-B {
+  color: #3498db;
+}
+
+.grade-card .grade-C {
+  color: #f39c12;
+}
+
+.grade-card .grade-D {
+  color: #e67e22;
+}
+
+.grade-card .grade-F {
+  color: #e74c3c;
+}
+
+.insights-loading {
+  text-align: center;
+  padding: 20px;
+  color: #666;
+}
+
+@media (max-width: 768px) {
+  .insights-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .insights-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,82 @@
+.snackbar {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #323232;
+  color: white;
+  padding: 16px 24px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  z-index: 2000;
+  animation: slideInUp 0.3s ease-out;
+  min-width: 300px;
+  max-width: 500px;
+}
+
+@keyframes slideInUp {
+  from {
+    transform: translateX(-50%) translateY(100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+  }
+}
+
+.snackbar-message {
+  flex: 1;
+  font-size: 15px;
+}
+
+.snackbar-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.snackbar-btn {
+  background: none;
+  border: none;
+  color: #ffd54f;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.snackbar-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.snackbar-btn:last-child {
+  color: white;
+  font-size: 20px;
+  padding: 4px 8px;
+}
+
+@media (max-width: 480px) {
+  .snackbar {
+    left: 10px;
+    right: 10px;
+    transform: translateX(0);
+    min-width: unset;
+  }
+
+  @keyframes slideInUp {
+    from {
+      transform: translateY(100px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+}

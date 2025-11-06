@@ -11,10 +11,13 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-// Helper function to calculate ROI (WITH BUG 5 - Division by zero issue)
+// Helper function to calculate ROI safely (avoid division by zero/NaN)
 const calculateROI = (revenue, timeTaken) => {
-  // BUG 5: No validation for division by zero
-  return revenue / timeTaken;
+  const rev = Number(revenue) || 0;
+  const time = Number(timeTaken) || 0;
+  if (time <= 0) return 0;
+  const roi = rev / time;
+  return Number.isFinite(roi) ? roi : 0;
 };
 
 // Routes
@@ -59,8 +62,8 @@ app.post('/api/tasks', async (req, res) => {
       return res.status(400).json({ error: 'Title is required' });
     }
 
-    // Calculate ROI (WITH BUG 5)
-    const roi = calculateROI(revenue || 0, timeTaken || 0);
+    // Calculate ROI safely
+    const roi = calculateROI(revenue, timeTaken);
 
     const task = await prisma.task.create({
       data: {
@@ -94,7 +97,7 @@ app.put('/api/tasks/:id', async (req, res) => {
     if (priority !== undefined) updateData.priority = priority;
     if (status !== undefined) updateData.status = status;
 
-    // Recalculate ROI if revenue or timeTaken changed (WITH BUG 5)
+    // Recalculate ROI if revenue or timeTaken changed
     if (revenue !== undefined || timeTaken !== undefined) {
       const currentTask = await prisma.task.findUnique({ where: { id } });
       const newRevenue = revenue !== undefined ? parseFloat(revenue) || 0 : currentTask.revenue;
@@ -185,4 +188,5 @@ process.on('SIGTERM', async () => {
   await prisma.$disconnect();
   process.exit(0);
 });
+
 

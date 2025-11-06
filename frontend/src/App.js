@@ -15,13 +15,11 @@ function App() {
   const [filterStatus, setFilterStatus] = useState('All');
   const [filterPriority, setFilterPriority] = useState('All');
 
-  // BUG 2: Undo snackbar state management issue
   const [lastDeletedTask, setLastDeletedTask] = useState(null);
   const [showSnackbar, setShowSnackbar] = useState(false);
 
   // Fetch tasks from API
   const fetchTasks = async () => {
-    console.log('Fetching tasks...'); // For debugging BUG 1
     try {
       setLoading(true);
       const response = await fetch(`${API_URL}/tasks`);
@@ -101,7 +99,7 @@ function App() {
       }
       setTasks(tasks.filter(task => task.id !== id));
 
-      // BUG 2: Set last deleted task for undo feature
+      // Set last deleted task for undo feature
       setLastDeletedTask(taskToDelete);
       setShowSnackbar(true);
     } catch (err) {
@@ -127,7 +125,7 @@ function App() {
         const restoredTask = await response.json();
         setTasks([restoredTask, ...tasks]);
         setShowSnackbar(false);
-        // BUG 2: Not clearing lastDeletedTask here
+        setLastDeletedTask(null);
       } catch (err) {
         setError(err.message);
         console.error('Error restoring task:', err);
@@ -135,13 +133,11 @@ function App() {
     }
   };
 
-  // BUG 2: When snackbar closes, lastDeletedTask is not cleared
   const handleCloseSnackbar = () => {
     setShowSnackbar(false);
-    // BUG 2: Missing: setLastDeletedTask(null);
+    setLastDeletedTask(null);
   };
 
-  // BUG 3: Unstable sorting - no tie-breaker for same ROI and priority
   const getSortedTasks = () => {
     return [...tasks].sort((a, b) => {
       // Primary sort: ROI (descending)
@@ -156,9 +152,8 @@ function App() {
         return priorityDiff;
       }
 
-      // BUG 3: Missing tie-breaker - should use title or createdAt
-      // Without a stable tie-breaker, equal items will shuffle randomly on re-render
-      return 0;
+      // Tertiary sort: createdAt (newer first)
+      return new Date(b.createdAt) - new Date(a.createdAt);
     });
   };
 

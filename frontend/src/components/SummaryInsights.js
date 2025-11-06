@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import './SummaryInsights.css';
 
 const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
@@ -6,12 +6,23 @@ const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
 function SummaryInsights() {
   const [insights, setInsights] = useState(null);
   const [loading, setLoading] = useState(true);
+  const hasFetchedRef = useRef(false);
+  const intervalRef = useRef(null);
 
   useEffect(() => {
+    // Prevent double-fetch in React.StrictMode
+    if (hasFetchedRef.current) return;
+    hasFetchedRef.current = true;
+
     fetchInsights();
     // Refresh insights every 5 seconds
-    const interval = setInterval(fetchInsights, 5000);
-    return () => clearInterval(interval);
+    intervalRef.current = setInterval(fetchInsights, 5000);
+
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    };
   }, []);
 
   const fetchInsights = async () => {
